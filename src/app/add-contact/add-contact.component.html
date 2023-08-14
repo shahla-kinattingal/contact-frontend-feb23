@@ -1,0 +1,149 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-primary">
+                <i class="fa-solid fa-user-plus me-2 "></i>add new contact page
+            </h1>
+            <p class="mt-3" style="text-align: justify;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                saepe dignissimos illum fugit nisi quasi earum, aperiam harum soluta ipsa ipsum vero mollitia dolores.
+                Magnam unde non sunt assumenda architecto.</p>
+
+        </div>
+    </div>
+
+
+    <!-- form -->
+    <div class="row mt-5 ">
+        <!-- form -->
+        <div class="col-md-8">
+            <form #addContactForm="ngForm" class="border p-3 rounded">
+
+                <!-- id -->
+                <div class="form-floating mb-3">
+                    <input name="id" #id="ngModel" [(ngModel)]="contact.id" type="text" class="form-control" id="floatinginputid" placeholder="contact id"
+                        required>
+                    <label for="floatinginputid">Contact id</label>
+                </div>
+                <!-- invalid id -->
+                <div *ngIf="id.invalid&&id.touched" class="mb-3 text-danger">
+                    please enter a valid id
+                </div>
+                <!-- NAME -->
+                <div class="form-floating mb-1">
+                    <input name="name" #name="ngModel"  [(ngModel)]="contact.name" type="text" class="form-control" id="floatinginputname" placeholder="contact name"
+                        pattern="[a-ZA-Z]" required>
+                    <label for="floatinginputname">Contact Name</label>
+                </div>
+                <!-- invalid name -->
+
+                <div *ngIf="name.invalid&&name.touched" class="mb-3 text-danger">
+                    please enter a valid contact name
+                </div>
+                <!-- IMAGE -->
+                <div class="form-floating mb-3">
+                    <input name="photo" #photo="ngModel"  [(ngModel)]="contact.photo" type="text" class="form-control" id="floatinginputphoto"
+                        placeholder="contact Image URL" required>
+                    <label for="floatinginputphoto">Contact Image URL</label>
+                </div>
+                <!-- invalid image -->
+                <div *ngIf="photo.invalid&&photo.touched" class="mb-3 text-danger">
+                    please have a valid photo
+                </div>
+                <!-- email -->
+                <div class="form-floating mb-3">
+                    <input name="email" #email="ngModel" [(ngModel)]="contact.email" type="text" class="form-control" id="floatinginputemail" placeholder="contact E mail"
+                        email required>
+                    <label for="floatinginputemail">Contact E mail</label>
+                </div>
+                <!-- invalid email -->
+                <div *ngIf="email.invalid&&email.touched" class="mb-3 text-danger">
+                    please enter a valid email
+                </div>
+                <!--mobile -->
+                <div class="form-floating mb-3">
+                    <input name="mobile" #mobile="ngModel"  [(ngModel)]="contact.mobile" type="text" class="form-control" id="floatinginputmobile" placeholder="contact Mobile"
+                        required pattern="[0-9]*" minlength="10" maxlength="10">
+                    <label for="floatinginputmobile">Contact Mobile</label>
+                </div>
+                <!-- invalid mobile -->
+                <div *ngIf="mobile.invalid&&mobile.touched" class="mb-3 text-danger">
+                    please enter a valid phone number
+                </div>
+                <!-- company -->
+                <div class="form-floating mb-3">
+                    <input name="company" #company="ngModel"  [(ngModel)]="contact.company" type="text" class="form-control" id="floatinginputcompany"
+                        placeholder="contact company name" required>
+                    <label for="floatinginputcompany">Contact comapny name</label>
+                </div>
+                <!-- invalid company -->
+
+                <div *ngIf="company.invalid&&company.touched" class="mb-3 text-danger">
+                    please enter a valid company name
+                </div>
+                <!-- profession -->
+                <div class="form-floating mb-3">
+                    <input name="title" #title="ngModel"  [(ngModel)]="contact.title"  type="text" class="form-control" id="floatinginputtitle"
+                        placeholder="contact title" required>
+                    <label for="floatinginputtitle">Contact Title</label>
+                </div>
+                 <!-- invalid title -->
+
+                 <div *ngIf="title.invalid&&title.touched" class="mb-3 text-danger">
+                    please enter a valid company name
+                </div>
+                
+                <!--dropdown -->
+                <div class="form-floating mb-3">
+                    <select name="groupId" #groupId="ngModel" [(ngModel)]="contact.groupId"  class="form-control" id="floatinginputgroup" pattern="[0-9]*" required>
+                        <option disabled selected hidden >{{contact.groupId}}</option>
+                        <option *ngFor="let group of groups" [value]="group.id">{{group.name}}</option>
+                    </select>
+                    <!-- <label for="floatinginputgroup"></label> -->
+
+                </div>
+                <!-- invalid group dropdown -->
+                <div *ngIf="groupId.invalid&&groupId.touched" class="mb-3 text-danger">
+                      please enter a valid groupid
+                </div>
+
+                <!-- button -->
+                <div class="mb-2">
+                    <button [disabled]="addContactForm.invalid" (click)="addContacts(contact)" class="btn btn-success">Create</button>
+                    <a routerLink="" class="btn btn-secondary ms-3">Close</a>
+
+                </div>
+
+
+
+            </form>
+        </div>
+        <!-- contact card -->
+        <div class="col-lg-4 d-flex justify-contact-center">
+            <div [hidden]="addContactForm.invalid" class="card align-items-center p-2" style="width: 18rem;">
+             <img width="100px" height="100px"[src]="contact.photo" alt="">
+                <div class="card body">
+                    <h5 class="card-title">contact-name:{{contact.name}}</h5>
+                    <p>id:-{{contact.id}}</p>
+                    <p>email:-{{contact.email}}</p>
+                    <p>mobile:-{{contact.mobile}}</p>
+                    <p>company:-{{contact.company}}</p>
+                    <p>group:-{{contact.groupId}}</p>
+                    <p>title:-{{contact.title}}</p>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- contact image -->
+        <!-- <div class="col-md-4 mt-5">
+            <img class="contact_img mt-5"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzTiyWKrzeuxtmJHpYkFNJA8_ElbfzGgsNyQ&usqp=CAU"
+                alt="contact">
+        </div> -->
+    </div>
+
+</div>

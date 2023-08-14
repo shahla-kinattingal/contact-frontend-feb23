@@ -1,0 +1,20 @@
+            contact managment application
+            -----------------------------
+
+1.create angular project  ng new project-name
+2.clear app component.html content
+3.run the project ----using ng s
+4.link all 3rd party liberies like bootstrap,font aswem...etc
+5.components--
+       1.header
+       2.footer
+       3.all-contact
+       4.add-contact
+       5.view-contact
+       6.edit-contact
+    
+6.component generate  ----ng g c component-name
+7.set up path for each component
+8.set up redirection in app-component.html
+9.design process
+10.user defined pipe--n g p pipe-folder/pipe-name
